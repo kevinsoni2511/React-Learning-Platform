@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
   <title>ReactMastery Pro 🚀 Complete React, TypeScript & Redux Learning Platform (Hinglish)</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -55,6 +55,58 @@
 
   <style>
     
+    /* iPhone 12 / iOS Safari Optimizations */
+    :root {
+      --sat: env(safe-area-inset-top, 0px);
+      --sab: env(safe-area-inset-bottom, 0px);
+      --sal: env(safe-area-inset-left, 0px);
+      --sar: env(safe-area-inset-right, 0px);
+    }
+
+    header {
+      padding-top: max(0.625rem, env(safe-area-inset-top)) !important;
+      padding-left: max(0.75rem, env(safe-area-inset-left)) !important;
+      padding-right: max(0.75rem, env(safe-area-inset-right)) !important;
+    }
+
+    main#main-content {
+      padding-bottom: max(3.5rem, calc(env(safe-area-inset-bottom) + 2rem)) !important;
+      padding-left: max(0.75rem, env(safe-area-inset-left)) !important;
+      padding-right: max(0.75rem, env(safe-area-inset-right)) !important;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* iOS smooth touch scrolling & prevent auto-zoom on inputs */
+    @media screen and (max-width: 768px) {
+      input[type="text"], input[type="search"], textarea, select {
+        font-size: 16px !important;
+      }
+      
+      .vscode-editor {
+        font-size: 14px !important;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      pre {
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+    }
+
     /* Master Prompt Dark-First Palette Override */
     .dark body { background-color: #0B0F19 !important; color: #F8FAFC !important; }
     .dark aside#left-sidebar { background-color: #111827 !important; border-color: #1E293B !important; }
@@ -109,26 +161,26 @@
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-200 overflow-x-hidden">
 
   <!-- TOP HEADER -->
-  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-2.5 flex items-center justify-between shadow-sm">
-    <div class="flex items-center space-x-3">
-      <button id="toggle-sidebar-btn" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition">
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-3 sm:px-4 py-2 sm:py-2.5 flex items-center justify-between shadow-sm">
+    <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
+      <button id="toggle-sidebar-btn" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition" aria-label="Toggle Syllabus Menu">
         <i class="fa-solid fa-bars text-lg"></i>
       </button>
       <div class="flex items-center space-x-2 cursor-pointer" onclick="navigateTo('dashboard')">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white text-lg shadow-md shadow-sky-500/20">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white text-base sm:text-lg shadow-md shadow-sky-500/20">
           <i class="fa-brands fa-react animate-spin" style="animation-duration: 10s;"></i>
         </div>
         <div>
-          <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent">ReactMastery</span>
+          <span class="font-extrabold text-base sm:text-lg tracking-tight bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent">ReactMastery</span>
           <span class="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 font-semibold border border-sky-300/40">PRO 2026</span>
         </div>
       </div>
     </div>
 
-    <!-- Global Search Input -->
+    <!-- Global Search Input (Desktop) -->
     <div class="hidden md:flex items-center flex-1 max-w-md mx-6">
       <div class="relative w-full">
         <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-sm"></i>
@@ -143,17 +195,22 @@
     </div>
 
     <!-- Quick Stats & Controls -->
-    <div class="flex items-center space-x-2 sm:space-x-3">
-      <!-- Unlock / Explore Mode Pill -->
-      <button onclick="toggleUnlockAllMode()" id="explore-mode-btn" class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800/60 text-purple-700 dark:text-purple-300 text-xs font-bold transition hover:bg-purple-100" title="Toggle Strict Sequential or Free Exploration Mode">
-        <i class="fa-solid fa-lock" id="unlock-mode-icon"></i>
+    <div class="flex items-center space-x-1 sm:space-x-2 shrink-0">
+      <!-- Search Button (Mobile Only) -->
+      <button onclick="if(window.openSearchModal) window.openSearchModal();" class="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Search topics">
+        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+      </button>
+
+      <!-- Unlock / Explore Mode Pill (Desktop) -->
+      <button onclick="toggleUnlockAllMode()" id="explore-mode-btn" class="hidden sm:flex items-center space-x-1 px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800/60 text-purple-700 dark:text-purple-300 text-xs font-bold transition hover:bg-purple-100" title="Toggle Strict Sequential or Free Exploration Mode">
+        <i class="fa-solid fa-lock text-[11px]" id="unlock-mode-icon"></i>
         <span id="unlock-mode-text">Strict Mode</span>
       </button>
 
       <!-- Streak Pill -->
-      <div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800/60 text-amber-700 dark:text-amber-400 text-xs font-bold" title="Lagatar Padhai Ka Streak">
+      <div class="flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800/60 text-amber-700 dark:text-amber-400 text-xs font-bold" title="Lagatar Padhai Ka Streak">
         <span>🔥</span>
-        <span id="streak-counter">3 Din Ka Streak</span>
+        <span id="streak-counter" class="text-xs">3<span class="hidden sm:inline"> Din</span></span>
       </div>
 
       <!-- Quiz Score Pill -->
@@ -163,30 +220,31 @@
       </div>
 
       <!-- Certificate Button -->
-      <button onclick="openCertificateModal()" class="px-2.5 py-1 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-sm transition" title="View / Print Completion Certificate">
+      <button onclick="openCertificateModal()" class="px-2 sm:px-2.5 py-1 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-sm transition" title="View / Print Completion Certificate">
         <i class="fa-solid fa-award"></i>
         <span class="hidden md:inline">Certificate</span>
       </button>
 
-      <!-- Export / Import Progress -->
-      <button onclick="exportProgressJSON()" class="p-2 rounded-xl text-slate-500 hover:text-sky-500 hover:bg-sky-50 dark:hover:bg-slate-800 transition" title="Export Progress JSON (Backup)">
+      <!-- Export / Import Progress (Desktop Only) -->
+      <button onclick="exportProgressJSON()" class="hidden sm:flex p-2 rounded-xl text-slate-500 hover:text-sky-500 hover:bg-sky-50 dark:hover:bg-slate-800 transition" title="Export Progress JSON (Backup)">
         <i class="fa-solid fa-cloud-arrow-down text-sm"></i>
       </button>
-      <button onclick="importProgressJSON()" class="p-2 rounded-xl text-slate-500 hover:text-sky-500 hover:bg-sky-50 dark:hover:bg-slate-800 transition" title="Import Progress JSON (Restore)">
+      <button onclick="importProgressJSON()" class="hidden sm:flex p-2 rounded-xl text-slate-500 hover:text-sky-500 hover:bg-sky-50 dark:hover:bg-slate-800 transition" title="Import Progress JSON (Restore)">
         <i class="fa-solid fa-cloud-arrow-up text-sm"></i>
       </button>
 
       <!-- Theme Toggle -->
       <button id="theme-toggle-btn" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Theme Badlein (Dark / Light Mode)">
-        <i class="fa-solid fa-moon text-base dark:hidden"></i>
-        <i class="fa-solid fa-sun text-base hidden dark:inline-block text-amber-400"></i>
+        <i class="fa-solid fa-moon text-sm dark:hidden"></i>
+        <i class="fa-solid fa-sun text-sm hidden dark:inline-block text-amber-400"></i>
       </button>
 
-      <!-- Reset Progress -->
-      <button onclick="promptResetProgress()" class="p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition" title="Apna Course Progress Reset Karein">
+      <!-- Reset Progress (Desktop Only) -->
+      <button onclick="promptResetProgress()" class="hidden sm:flex p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition" title="Apna Course Progress Reset Karein">
         <i class="fa-solid fa-arrow-rotate-left text-sm"></i>
       </button>
-    </div></header>
+    </div>
+  </header>
 
   <!-- SEARCH MODAL -->
   <div id="search-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-start justify-center pt-20 px-4">
@@ -208,11 +266,25 @@
   </div>
 
   <!-- MAIN WORKSPACE LAYOUT (3-Column / Responsive) -->
-  <div class="flex-1 flex overflow-hidden">
+  <div class="flex-1 flex overflow-hidden relative">
 
-    <!-- LEFT SIDEBAR: CURRICULUM NAV -->
-    <aside id="left-sidebar" class="w-80 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0 transition-all duration-300 overflow-y-auto">
+    <!-- Mobile Drawer Backdrop -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar(false)" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-40 hidden md:hidden transition-opacity duration-300"></div>
+
+    <!-- LEFT SIDEBAR: CURRICULUM NAV (Drawer on Mobile, Static on Desktop) -->
+    <aside id="left-sidebar" class="fixed md:static inset-y-0 left-0 z-50 w-80 max-w-[85vw] bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0 transition-all duration-300 overflow-y-auto hidden md:flex shadow-2xl md:shadow-none">
       
+      <!-- Mobile Drawer Close Header -->
+      <div class="md:hidden flex items-center justify-between p-3.5 border-b border-slate-200 dark:border-slate-800 bg-slate-100/60 dark:bg-slate-800/60">
+        <div class="flex items-center space-x-2">
+          <i class="fa-solid fa-graduation-cap text-sky-500"></i>
+          <span class="font-bold text-sm text-slate-800 dark:text-slate-200">Course Syllabus & Nav</span>
+        </div>
+        <button onclick="toggleSidebar(false)" class="p-1.5 rounded-lg text-slate-500 hover:text-slate-800 dark:hover:text-white transition" aria-label="Close menu">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
       <!-- Quick Nav Hub -->
       <div class="p-3 border-b border-slate-200 dark:border-slate-800 space-y-1">
         <button onclick="navigateTo('dashboard')" id="nav-btn-dashboard" class="w-full flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
@@ -530,6 +602,9 @@
 
     // --- NAVIGATION CONTROLLER ---
     function navigateTo(view, targetId = null) {
+      if (window.innerWidth < 768 && typeof toggleSidebar === 'function') {
+        toggleSidebar(false);
+      }
       currentView = view;
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -2054,7 +2129,7 @@
       if (ptsCounter) ptsCounter.textContent = `${pts} pts`;
 
       const streak = document.getElementById('streak-counter');
-      if (streak) streak.textContent = `${appState.streakDays} Day Streak`;
+      if (streak) streak.innerHTML = `${appState.streakDays}<span class="hidden sm:inline"> Day Streak</span>`;
     }
 
     // --- GLOBAL SEARCH MODAL ---
@@ -2068,6 +2143,7 @@
         modalInput.focus();
       };
 
+      window.openSearchModal = openModal;
       window.closeSearchModal = () => {
         modal.classList.add('hidden');
       };
@@ -2183,6 +2259,32 @@
         .replace(/\\r/g, '');
     }
 
+    function toggleSidebar(forceState) {
+      const sidebar = document.getElementById('left-sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (!sidebar) return;
+
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        const isCurrentlyOpen = !sidebar.classList.contains('hidden');
+        const nextState = typeof forceState === 'boolean' ? forceState : !isCurrentlyOpen;
+
+        if (nextState) {
+          sidebar.classList.remove('hidden');
+          sidebar.classList.add('flex');
+          if (backdrop) backdrop.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        } else {
+          sidebar.classList.add('hidden');
+          sidebar.classList.remove('flex');
+          if (backdrop) backdrop.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      } else {
+        sidebar.classList.toggle('hidden');
+      }
+    }
+
     // --- INITIALIZE APPLICATION ON WINDOW LOAD ---
     window.addEventListener('DOMContentLoaded', () => {
       initTheme();
@@ -2190,10 +2292,10 @@
 
       // Mobile sidebar toggle
       const sidebarBtn = document.getElementById('toggle-sidebar-btn');
-      const sidebar = document.getElementById('left-sidebar');
-      if (sidebarBtn && sidebar) {
-        sidebarBtn.addEventListener('click', () => {
-          sidebar.classList.toggle('hidden');
+      if (sidebarBtn) {
+        sidebarBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleSidebar();
         });
       }
 
