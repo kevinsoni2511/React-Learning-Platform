@@ -1,0 +1,75 @@
+<header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-2.5 flex items-center justify-between shadow-sm">
+    <div class="flex items-center space-x-3">
+      <button id="toggle-sidebar-btn" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+      <div class="flex items-center space-x-2 cursor-pointer" onclick="navigateTo('dashboard')">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white text-lg shadow-md shadow-sky-500/20">
+          <i class="fa-brands fa-react animate-spin" style="animation-duration: 10s;"></i>
+        </div>
+        <div>
+          <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent">ReactMastery</span>
+          <span class="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 font-semibold border border-sky-300/40">PRO 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Search Input -->
+    <div class="hidden md:flex items-center flex-1 max-w-md mx-6">
+      <div class="relative w-full">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-sm"></i>
+        <input
+          id="global-search-input"
+          type="text"
+          placeholder="React, TypeScript, Redux ke topics, exercises, projects search karein... (Ctrl+K)"
+          class="w-full bg-slate-100 dark:bg-slate-800/80 text-sm pl-9 pr-10 py-1.5 rounded-xl border border-transparent focus:border-sky-500 dark:focus:border-sky-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition shadow-inner"
+        />
+        <span class="absolute right-2.5 top-2 text-[10px] bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1.5 py-0.5 rounded font-mono">⌘K</span>
+      </div>
+    </div>
+
+    <!-- Quick Stats & Controls -->
+    <div class="flex items-center space-x-2 sm:space-x-3">
+      <!-- Unlock / Explore Mode Pill -->
+      <button onclick="toggleUnlockAllMode()" id="explore-mode-btn" class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800/60 text-purple-700 dark:text-purple-300 text-xs font-bold transition hover:bg-purple-100" title="Toggle Strict Sequential or Free Exploration Mode">
+        <i class="fa-solid fa-lock" id="unlock-mode-icon"></i>
+        <span id="unlock-mode-text">Strict Mode</span>
+      </button>
+
+      <!-- Streak Pill -->
+      <div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800/60 text-amber-700 dark:text-amber-400 text-xs font-bold" title="Lagatar Padhai Ka Streak">
+        <span>🔥</span>
+        <span id="streak-counter">3 Din Ka Streak</span>
+      </div>
+
+      <!-- Quiz Score Pill -->
+      <div class="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+        <span>🏆</span>
+        <span id="total-points-counter">0 Kul Pts</span>
+      </div>
+
+      <!-- Certificate Button -->
+      <button onclick="openCertificateModal()" class="px-2.5 py-1 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-sm transition" title="View / Print Completion Certificate">
+        <i class="fa-solid fa-award"></i>
+        <span class="hidden md:inline">Certificate</span>
+      </button>
+
+      <!-- Export / Import Progress -->
+      <button onclick="exportProgressJSON()" class="p-2 rounded-xl text-slate-500 hover:text-sky-500 hover:bg-sky-50 dark:hover:bg-slate-800 transition" title="Export Progress JSON (Backup)">
+        <i class="fa-solid fa-cloud-arrow-down text-sm"></i>
+      </button>
+      <button onclick="importProgressJSON()" class="p-2 rounded-xl text-slate-500 hover:text-sky-500 hover:bg-sky-50 dark:hover:bg-slate-800 transition" title="Import Progress JSON (Restore)">
+        <i class="fa-solid fa-cloud-arrow-up text-sm"></i>
+      </button>
+
+      <!-- Theme Toggle -->
+      <button id="theme-toggle-btn" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Theme Badlein (Dark / Light Mode)">
+        <i class="fa-solid fa-moon text-base dark:hidden"></i>
+        <i class="fa-solid fa-sun text-base hidden dark:inline-block text-amber-400"></i>
+      </button>
+
+      <!-- Reset Progress -->
+      <button onclick="promptResetProgress()" class="p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition" title="Apna Course Progress Reset Karein">
+        <i class="fa-solid fa-arrow-rotate-left text-sm"></i>
+      </button>
+    </div></header>

@@ -1,0 +1,48 @@
+sonTabHtml(tab, currentActiveLesson);
+        if (tab === 'sandbox') {
+          initLiveSandbox();
+        }
+      }
+    }
+
+    function getLessonTabHtml(tab, found) {
+      const { item, module, type } = found;
+      const isExercise = type === 'exercise';
+
+      if (tab === 'guide') {
+        if (type === 'exercise') {
+          return `
+            <div class="space-y-6">
+              <!-- Exercise Instructions Card -->
+              <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                  <i class="fa-solid fa-dumbbell text-emerald-500"></i>
+                  <span>Exercise Instructions & Objectives</span>
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  ${item.instructions}
+                </p>
+              </div>
+
+              <!-- Complete Solution Code -->
+              <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                  <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                    Runnable Solution Implementation
+                  </h3>
+                  <button onclick="copyCodeText('${escapeQuotes(item.solutionCode)}')" class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white transition">
+                    <i class="fa-regular fa-copy"></i> Code Copy Karein Code
+                  </button>
+                </div>
+                <pre class="p-4 rounded-xl bg-slate-950 text-slate-100 font-mono text-xs overflow-x-auto leading-relaxed border border-slate-800">${escapeHtml(item.solutionCode)}</pre>
+              </div>
+
+              <div class="p-4 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 flex items-center justify-between">
+                <span class="text-xs text-sky-800 dark:text-sky-300 font-semibold">Ready to test and tweak this exercise live in the browser?</span>
+                <button onclick="switchLessonTab('sandbox')" class="px-3.5 py-1.5 rounded-lg bg-sky-600 text-white font-bold text-xs hover:bg-sky-500 transition">
+                  Open in Interactive Sandbox →
+                </button>
+              </div>
+            </div>
+          `;
+        }
