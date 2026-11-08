@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReactMastery Pro 🚀 Complete React, TypeScript & Redux Learning Platform (Hinglish)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Inter & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- React & ReactDOM 18 CDN for in-browser execution -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <!-- Babel Standalone for in-browser JSX/ES6/TS transpilation -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          },
+          colors: {
+            darkBg: '#0B0F19',
+            darkSidebar: '#111827',
+            darkCard: '#151D2E',
+            darkBorder: '#1E293B',
+            primary: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              400: '#a78bfa',
+              500: '#8B5CF6',
+              600: '#7c3aed',
+              700: '#6d28d9'
+            },
+            secondary: {
+              500: '#6366F1',
+              600: '#4f46e5'
+            },
+            brandSuccess: '#22C55E'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    
+    /* Master Prompt Dark-First Palette Override */
+    .dark body { background-color: #0B0F19 !important; color: #F8FAFC !important; }
+    .dark aside#left-sidebar { background-color: #111827 !important; border-color: #1E293B !important; }
+    .dark aside#right-sidebar { background-color: #111827 !important; border-color: #1E293B !important; }
+    .dark header { background-color: rgba(17, 24, 39, 0.95) !important; border-color: #1E293B !important; }
+    .dark main { background-color: #0B0F19 !important; }
+    .dark .bg-slate-900, .dark .dark\:bg-slate-900 { background-color: #151D2E !important; }
+
+    /* Crisp High-Contrast Hero Primary Button */
+    .resume-lesson-btn {
+      background-color: #FFFFFF !important;
+      color: #0F172A !important;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
+    }
+    .resume-lesson-btn:hover {
+      background-color: #F8FAFC !important;
+      color: #0284C7 !important;
+    }
+    .resume-lesson-btn i {
+      color: #0284C7 !important;
+    }
+    .dark .border-slate-800, .dark .border-slate-700, .dark .border-slate-200 { border-color: #1E293B !important; }
+    .dark .bg-slate-950 { background-color: #0B0F19 !important; }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); }
+    .dark ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+    ::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.4); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.7); }
+
+    /* VS Code Theme Mock */
+    .vscode-editor {
+      font-family: 'Fira Code', monospace;
+      font-size: 13.5px;
+      line-height: 1.6;
+      tab-size: 2;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+    }
+    .dark .glass-card {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+    }
+
+    .badge-hinglish {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #fff;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-200">
+
+  <!-- TOP HEADER -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-2.5 flex items-center justify-between shadow-sm">
+    <div class="flex items-center space-x-3">
+      <button id="toggle-sidebar-btn" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+      <div class="flex items-center space-x-2 cursor-pointer" onclick="navigateTo('dashboard')">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white text-lg shadow-md shadow-sky-500/20">
+          <i class="fa-brands fa-react animate-spin" style="animation-duration: 10s;"></i>
+        </div>
+        <div>
+          <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 bg-clip-text text-transparent">ReactMastery</span>
+          <span class="hidden sm:inline-block ml-2 text-xs px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 font-semibold border border-sky-300/40">PRO 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Search Input -->
+    <div class="hidden md:flex items-center flex-1 max-w-md mx-6">
+      <div class="relative w-full">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-sm"></i>
+        <input
+          id="global-search-input"
+          type="text"
+          placeholder="React, TypeScript, Redux ke topics, exercises, projects search karein... (Ctrl+K)"
+          class="w-full bg-slate-100 dark:bg-slate-800/80 text-sm pl-9 pr-10 py-1.5 rounded-xl border border-transparent focus:border-sky-500 dark:focus:border-sky-500 focus:bg-white dark:focus:bg-slate-900 focus:outline-none transition shadow-inner"
+        />
+        <span class="absolute right-2.5 top-2 text-[10px] bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-1.5 py-0.5 rounded font-mono">⌘K</span>
+      </div>
+    </div>
+
+    <!-- Quick Stats & Controls -->
+    <div class="flex items-center space-x-2 sm:space-x-3">
+      <!-- Unlock / Explore Mode Pill -->
+      <button onclick="toggleUnlockAllMode()" id="explore-mode-btn" class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800/60 text-purple-700 dark:text-purple-300 text-xs font-bold transition hover:bg-purple-100" title="Toggle Strict Sequential or Free Exploration Mode">
+        <i class="fa-solid fa-lock" id="unlock-mode-icon"></i>
+        <span id="unlock-mode-text">Strict Mode</span>
+      </button>
+
+      <!-- Streak Pill -->
+      <div class="flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800/60 text-amber-700 dark:text-amber-400 text-xs font-bold" title="Lagatar Padhai Ka Streak">
+        <span>🔥</span>
+        <span id="streak-counter">3 Din Ka Streak</span>
+      </div>
+
+      <!-- Quiz Score Pill -->
+      <div class="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-400 text-xs font-bold">
+        <span>🏆</span>
+        <span id="total-points-counter">0 Kul Pts</span>
+      </div>
+
+      <!-- Certificate Button -->
+      <button onclick="openCertificateModal()" class="px-2.5 py-1 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-sm transition" title="View / Print Completion Certificate">
+        <i class="fa-solid fa-award"></i>
+        <span class="hidden md:inline">Certificate</span>
+      </button>
+
+      <!-- Export / Import Progress -->
+      <button onclick="exportProgressJSON()" class="p-2 rounded-xl text-slate-500 hover:text-sky-500 hover:bg-sky-50 dark:hover:bg-slate-800 transition" title="Export Progress JSON (Backup)">
+        <i class="fa-solid fa-cloud-arrow-down text-sm"></i>
+      </button>
+      <button onclick="importProgressJSON()" class="p-2 rounded-xl text-slate-500 hover:text-sky-500 hover:bg-sky-50 dark:hover:bg-slate-800 transition" title="Import Progress JSON (Restore)">
+        <i class="fa-solid fa-cloud-arrow-up text-sm"></i>
+      </button>
+
+      <!-- Theme Toggle -->
+      <button id="theme-toggle-btn" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Theme Badlein (Dark / Light Mode)">
+        <i class="fa-solid fa-moon text-base dark:hidden"></i>
+        <i class="fa-solid fa-sun text-base hidden dark:inline-block text-amber-400"></i>
+      </button>
+
+      <!-- Reset Progress -->
+      <button onclick="promptResetProgress()" class="p-2 rounded-xl text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition" title="Apna Course Progress Reset Karein">
+        <i class="fa-solid fa-arrow-rotate-left text-sm"></i>
+      </button>
+    </div></header>
+
+  <!-- SEARCH MODAL -->
+  <div id="search-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-start justify-center pt-20 px-4">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+        <i class="fa-solid fa-magnifying-glass text-slate-400 text-lg"></i>
+        <input
+          id="modal-search-input"
+          type="text"
+          placeholder="React, TypeScript, Redux ke topics, exercises, projects type karein..."
+          class="w-full bg-transparent text-slate-900 dark:text-slate-100 text-base focus:outline-none"
+        />
+        <button onclick="closeSearchModal()" class="text-xs bg-slate-100 dark:bg-slate-800 text-slate-500 px-2 py-1 rounded">ESC</button>
+      </div>
+      <div id="search-results-container" class="max-h-96 overflow-y-auto p-2 divide-y divide-slate-100 dark:divide-slate-800/60">
+        <div class="p-4 text-center text-slate-400 text-sm">Jaise type karein: "useState", "Redux Toolkit", "Portal", "JWT", "Virtual DOM"...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN WORKSPACE LAYOUT (3-Column / Responsive) -->
+  <div class="flex-1 flex overflow-hidden">
+
+    <!-- LEFT SIDEBAR: CURRICULUM NAV -->
+    <aside id="left-sidebar" class="w-80 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0 transition-all duration-300 overflow-y-auto">
+      
+      <!-- Quick Nav Hub -->
+      <div class="p-3 border-b border-slate-200 dark:border-slate-800 space-y-1">
+        <button onclick="navigateTo('dashboard')" id="nav-btn-dashboard" class="w-full flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-gauge text-sky-500 w-5"></i>
+          <span>Dashboard (Pragati Hub)</span>
+        </button>
+        <button onclick="navigateTo('roadmap')" id="nav-btn-roadmap" class="w-full flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-route text-indigo-500 w-5"></i>
+          <span>Seekhne Ka Roadmap</span>
+        </button>
+        <button onclick="navigateTo('projects')" id="nav-btn-projects" class="w-full flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-laptop-code text-emerald-500 w-5"></i>
+          <span>10 Live Projects</span>
+          <span class="ml-auto text-xs bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 font-bold px-1.5 py-0.5 rounded">10</span>
+        </button>
+        <button onclick="navigateTo('interviews')" id="nav-btn-interviews" class="w-full flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-user-graduate text-purple-500 w-5"></i>
+          <span>Interview Prep Hub</span>
+        </button>
+        <button onclick="navigateTo('tests')" id="nav-btn-tests" class="w-full flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-clipboard-check text-rose-500 w-5"></i>
+          <span>Tests & Diagnosis</span>
+        </button>
+        <button onclick="navigateTo('notes')" id="nav-btn-notes" class="w-full flex items-center space-x-3 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i class="fa-solid fa-book-bookmark text-amber-500 w-5"></i>
+          <span>My Notes & Bookmarks</span>
+        </button>
+      </div>
+
+      <!-- Module List (Accordion Style) -->
+      <div class="p-3">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-2 flex justify-between items-center">
+          <span>12 CURRICULUM MODULES (SHURU SE PRO)</span>
+          <span id="modules-progress-badge" class="text-[11px] font-mono text-sky-600 dark:text-sky-400 font-bold">0% Done</span>
+        </div>
+        <div id="sidebar-modules-container" class="space-y-1">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER MAIN CONTENT AREA -->
+    <main id="main-content" class="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950 p-4 sm:p-6 lg:p-8">
+      <!-- Dynamically injected views: dashboard, roadmap, lesson, projects, interviews, tests, notes -->
+      <div id="dynamic-view-container" class="max-w-5xl mx-auto space-y-6">
+        <!-- Rendered by JS -->
+      </div>
+    </main>
+
+    <!-- RIGHT CONTEXTUAL SIDEBAR (Collapsible) -->
+    <aside id="right-sidebar" class="hidden xl:flex w-72 bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 flex-col shrink-0 p-4 overflow-y-auto text-sm">
+      <div class="sticky top-0 space-y-5">
+        <!-- Current Topic Checklist -->
+        <div>
+          <h4 class="font-bold text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2 flex items-center justify-between">
+            <span>Aapne Kya Kya Sikha?</span>
+            <i class="fa-solid fa-list-check text-sky-500"></i>
+          </h4>
+          <div id="right-checklist-container" class="space-y-1.5 text-xs text-slate-600 dark:text-slate-400">
+            <div class="flex items-center gap-2"><input type="checkbox" checked disabled class="rounded text-sky-600"> <span>Core Concept Padha (Guide)</span></div>
+            <div class="flex items-center gap-2"><input type="checkbox" id="chk-ran-code" disabled class="rounded text-sky-600"> <span>Live Code Run Karke Dekha</span></div>
+            <div class="flex items-center gap-2"><input type="checkbox" id="chk-quiz-done" disabled class="rounded text-sky-600"> <span>Quiz Pura Kiya (+10 Pts)</span></div>
+          </div>
+        </div>
+
+        <!-- Pro Interview Tip Card -->
+        <div class="p-3.5 rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/40 dark:to-purple-950/40 border border-indigo-200/60 dark:border-indigo-800/60">
+          <div class="flex items-center gap-2 font-bold text-xs text-indigo-700 dark:text-indigo-300 mb-1">
+            <i class="fa-solid fa-lightbulb text-amber-500"></i>
+            <span>Interview Ka Sunehra Niyam</span>
+          </div>
+          <p id="right-interview-tip" class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Top MNC interviews me pehle internal mechanism (Fiber, Reconciliation, Closures) explain karein, direct syntax par jump na karein!
+          </p>
+        </div>
+
+        <!-- Topic Zaroori Baatein (Quick Reference) Cheat-sheet -->
+        <div>
+          <h4 class="font-bold text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">
+            Quick Reference
+          </h4>
+          <div id="right-quick-reference" class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60 font-mono text-xs text-slate-700 dark:text-slate-300 space-y-1 leading-snug">
+            <div>// Target: React 18+</div>
+            <div>// Type Safety: TS 5.5+</div>
+            <div>// Redux: Toolkit RTK</div>
+          </div>
+        </div>
+
+        <!-- Quick Action Buttons -->
+        <div class="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+          <button id="right-btn-mark-complete" onclick="toggleCurrentLessonCompletion()" class="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition shadow-md shadow-emerald-600/20">
+            <i class="fa-solid fa-circle-check"></i>
+            <span id="mark-complete-text">Pura Ho Gaya ✓</span>
+          </button>
+          <button id="right-btn-bookmark" onclick="toggleCurrentBookmark()" class="w-full py-2 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center justify-center gap-2 transition">
+            <i class="fa-regular fa-bookmark" id="bookmark-icon"></i>
+            <span id="bookmark-text">Lesson Save Karein 📌</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- EMBEDDED CURRICULUM DATABASE -->
+  <script>
+    window.COURSE_MODULES = __MODULES_DATA__;
+    window.COURSE_PROJECTS = __PROJECTS_DATA__;
+    window.INTERVIEW_QUESTIONS = __INTERVIEW_DATA__;
+  </script>
+
+  <!-- APPLICATION ENGINE JAVASCRIPT -->
+  <script>
+    // --- LOCAL STORAGE STATE MANAGEMENT ---
+    const STORAGE_KEY = 'reactmastery_v2_store';
+
+    function getInitialState() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try { return JSON.parse(saved); } catch (e) { console.error(e); }
+      }
+      return {
+        completedLessons: [],
+        completedExercises: [],
+        completedProjects: [],
+        bookmarks: [],
+        notes: {},
+        quizScores: {},
+        streakDays: 3,
+        lastStudiedId: 'm1-what-is-react',
+        theme: 'dark',
+        unlockAll: false,
+        studentName: 'React Developer'
+      };
+    }
+
+    // Helper: All ordered item IDs for sequential locking
+    function getAllItemIds() {
+      const allIds = [];
+      window.COURSE_MODULES.forEach(m => {
+        m.lessons.forEach(l => allIds.push(l.id));
+        if (m.exercises) m.exercises.forEach(ex => allIds.push(`${m.id}-ex-${ex.num}`));
+      });
+      return allIds;
+    }
+
+    // Helper: Check if an item is unlocked
+    function isItemUnlocked(id) {
+      if (appState.unlockAll) return true;
+      const allIds = getAllItemIds();
+      const idx = allIds.indexOf(id);
+      if (idx <= 0) return true; // First lesson is always unlocked!
+      const prevId = allIds[idx - 1];
+      const isPrevDone = appState.completedLessons.includes(prevId) || appState.completedExercises.includes(prevId);
+      return isPrevDone;
+    }
+
+    // Toggle Explore Mode vs Strict Sequential Learning
+    function toggleUnlockAllMode() {
+      appState.unlockAll = !appState.unlockAll;
+      persistState();
+      updateUnlockButtonUI();
+      renderSidebarModules();
+      alert(appState.unlockAll
+        ? '🔓 Explore Mode On: Sabhi 12 modules aur lessons unlock ho chuke hain! Aap kisi bhi topic par freely jump kar sakte hain.'
+        : '🔒 Strict Sequential Mode On: Ab lessons step-by-step unlock honge jaise aap pichhle lessons ko complete karenge.');
+      if (currentActiveLesson) {
+        navigateTo('lesson', currentActiveLesson.id || currentActiveLesson.item.id);
+      }
+    }
+
+    function updateUnlockButtonUI() {
+      const btn = document.getElementById('explore-mode-btn');
+      const icon = document.getElementById('unlock-mode-icon');
+      const text = document.getElementById('unlock-mode-text');
+      if (btn && icon && text) {
+        if (appState.unlockAll) {
+          icon.className = 'fa-solid fa-lock-open text-emerald-500';
+          text.textContent = 'Explore Mode';
+          btn.className = 'flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold transition hover:bg-emerald-100';
+        } else {
+          icon.className = 'fa-solid fa-lock text-purple-500';
+          text.textContent = 'Strict Mode';
+          btn.className = 'flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800/60 text-purple-700 dark:text-purple-300 text-xs font-bold transition hover:bg-purple-100';
+        }
+      }
+    }
+
+    // Export progress JSON
+    function exportProgressJSON() {
+      const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(appState, null, 2));
+      const a = document.createElement('a');
+      a.setAttribute('href', dataStr);
+      a.setAttribute('download', 'react_mastery_learning_progress.json');
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      alert('✓ Progress Exported! react_mastery_learning_progress.json download ho chuka hai.');
+    }
+
+    // Import progress JSON
+    function importProgressJSON() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.json';
+      input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          try {
+            const parsed = JSON.parse(event.target.result);
+            if (parsed && typeof parsed === 'object') {
+              appState = { ...getInitialState(), ...parsed };
+              persistState();
+              alert('✓ Zabardast! Aapka learning progress safaltapoorvak restore ho chuka hai.');
+              navigateTo('dashboard');
+            } else {
+              alert('✕ Invalid progress file format.');
+            }
+          } catch (err) {
+            alert('✕ Error parsing JSON: ' + err.message);
+          }
+        };
+        reader.readAsText(file);
+      };
+      input.click();
+    }
+
+    // Certificate of Completion handlers
+    function openCertificateModal() {
+      const modal = document.getElementById('certificate-modal');
+      if (!modal) return;
+      const nameInput = document.getElementById('cert-student-name');
+      if (nameInput) nameInput.value = appState.studentName || 'React Developer';
+      updateCertificateDisplay();
+      modal.classList.remove('hidden');
+    }
+
+    function closeCertificateModal() {
+      const modal = document.getElementById('certificate-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function updateCertificateDisplay() {
+      const nameInput = document.getElementById('cert-student-name');
+      const nameDisplay = document.getElementById('cert-display-name');
+      const dateDisplay = document.getElementById('cert-display-date');
+      const scoreDisplay = document.getElementById('cert-display-score');
+
+      if (nameInput && nameDisplay) {
+        appState.studentName = nameInput.value || 'React Developer';
+        nameDisplay.textContent = appState.studentName;
+        persistState();
+      }
+      if (dateDisplay) {
+        dateDisplay.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      }
+      if (scoreDisplay) {
+        const totalLessons = window.COURSE_MODULES.reduce((acc, m) => acc + m.lessons.length + (m.exercises ? m.exercises.length : 0), 0);
+        const totalCompleted = appState.completedLessons.length + appState.completedExercises.length;
+        const percent = Math.round((totalCompleted / (totalLessons || 1)) * 100);
+        const pts = Object.values(appState.quizScores).reduce((acc, q) => acc + (q.score || 0), 0);
+        scoreDisplay.textContent = `${percent}% Curriculum Finished • ${pts} Quiz Points`;
+      }
+    }
+
+    let appState = getInitialState();
+
+    function persistState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      updateGlobalStatsUI();
+    }
+
+    // --- ROUTING & ACTIVE VIEW CONTROLLER ---
+    let currentView = 'dashboard';
+    let currentActiveLesson = null;
+    let currentActiveTab = 'guide'; // 'guide', 'sandbox', 'quiz', 'notes'
+
+    function initTheme() {
+      if (appState.theme === 'dark' || (!appState.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        appState.theme = 'dark';
+      } else {
+        document.documentElement.classList.remove('dark');
+        appState.theme = 'light';
+      }
+      document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark');
+          appState.theme = 'light';
+        } else {
+          document.documentElement.classList.add('dark');
+          appState.theme = 'dark';
+        }
+        persistState();
+      });
+    }
+
+    // Find lesson or exercise by ID across all 12 modules
+    function findItemById(id) {
+      for (const mod of window.COURSE_MODULES) {
+        for (const l of mod.lessons) {
+          if (l.id === id) return { item: l, module: mod, type: 'lesson' };
+        }
+        if (mod.exercises) {
+          for (const ex of mod.exercises) {
+            const exId = `${mod.id}-ex-${ex.num}`;
+            if (exId === id || `ex-${ex.num}` === id) return { item: ex, module: mod, type: 'exercise', id: exId };
+          }
+        }
+      }
+      return null;
+    }
+
+    // --- NAVIGATION CONTROLLER ---
+    function navigateTo(view, targetId = null) {
+      currentView = view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Update Header/Sidebar Active Styles
+      const navButtons = ['dashboard', 'roadmap', 'projects', 'interviews', 'tests', 'notes'];
+      navButtons.forEach(btn => {
+        const el = document.getElementById(`nav-btn-${btn}`);
+        if (el) {
+          if (view === btn) {
+            el.classList.add('bg-sky-50', 'text-sky-700', 'dark:bg-sky-950/60', 'dark:text-sky-300');
+          } else {
+            el.classList.remove('bg-sky-50', 'text-sky-700', 'dark:bg-sky-950/60', 'dark:text-sky-300');
+          }
+        }
+      });
+
+      const container = document.getElementById('dynamic-view-container');
+
+      if (view === 'dashboard') {
+        renderDashboardView(container);
+      } else if (view === 'roadmap') {
+        renderRoadmapView(container);
+      } else if (view === 'projects') {
+        renderProjectsView(container, targetId);
+      } else if (view === 'interviews') {
+        renderInterviewsView(container);
+      } else if (view === 'tests') {
+        renderTestsView(container);
+      } else if (view === 'notes') {
+        renderNotesView(container);
+      } else if (view === 'lesson' && targetId) {
+        renderLessonView(container, targetId);
+      }
+
+      renderSidebarModules();
+      updateGlobalStatsUI();
+    }
+
+    // --- RENDER SIDEBAR MODULES ---
+    function renderSidebarModules() {
+      const container = document.getElementById('sidebar-modules-container');
+      if (!container) return;
+
+      container.innerHTML = window.COURSE_MODULES.map(mod => {
+        const isCurrentMod = currentActiveLesson && currentActiveLesson.module.id === mod.id;
+        const totalLessons = mod.lessons.length + (mod.exercises ? mod.exercises.length : 0);
+        let completedInMod = 0;
+        mod.lessons.forEach(l => { if (appState.completedLessons.includes(l.id)) completedInMod++; });
+        if (mod.exercises) {
+          mod.exercises.forEach(ex => {
+            const exId = `${mod.id}-ex-${ex.num}`;
+            if (appState.completedExercises.includes(exId)) completedInMod++;
+          });
+        }
+        const percent = Math.round((completedInMod / (totalLessons || 1)) * 100);
+
+        return `
+          <div class="rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800/80 mb-1.5">
+            <button
+              onclick="toggleModuleAccordion('${mod.id}')"
+              class="w-full flex items-center justify-between p-2.5 text-left bg-slate-50/70 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+            >
+              <div class="flex items-center space-x-2.5 min-w-0">
+                <span class="w-6 h-6 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 text-xs font-bold flex items-center justify-center shrink-0">
+                  ${mod.number}
+                </span>
+                <div class="truncate">
+                  <div class="font-bold text-xs text-slate-800 dark:text-slate-200 truncate">${mod.hindiTitle || mod.title}</div><div class="text-[10px] text-slate-400 dark:text-slate-500 truncate">${mod.title}</div>
+                  <div class="text-[11px] text-slate-400 dark:text-slate-500">${completedInMod}/${totalLessons} done (${percent}%)</div>
+                </div>
+              </div>
+              <i class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform" id="arrow-${mod.id}"></i>
+            </button>
+            <div id="module-items-${mod.id}" class="${isCurrentMod ? 'block' : 'hidden'} bg-white dark:bg-slate-900/40 p-1.5 space-y-0.5 border-t border-slate-100 dark:border-slate-800/60">
+              <!-- Topic Lessons -->
+              ${mod.lessons.map(l => {
+                const isDone = appState.completedLessons.includes(l.id);
+                const isBookmarked = appState.bookmarks.includes(l.id);
+                const isCurrent = currentActiveLesson && currentActiveLesson.item.id === l.id;
+                const unlocked = isItemUnlocked(l.id);
+                return `
+                  <div
+                    onclick="${unlocked ? `navigateTo('lesson', '${l.id}')` : `alert('🔒 Yeh lesson abhi locked hai! Sequential learning ke mutabiq pehle pichhla lesson complete karein, ya upar se "Explore Mode" toggle karein.')`}"
+                    class="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs cursor-pointer transition ${
+                      !unlocked ? 'opacity-40 hover:opacity-75' :
+                      isCurrent
+                        ? 'bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300 font-bold'
+                        : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                    }"
+                  >
+                    <div class="flex items-center space-x-2 truncate">
+                      <span class="${isDone ? 'text-emerald-500' : (!unlocked ? 'text-amber-500' : 'text-slate-300 dark:text-slate-600')}">
+                        <i class="fa-${isDone ? 'solid fa-circle-check' : (!unlocked ? 'solid fa-lock text-[10px]' : 'regular fa-circle')}"></i>
+                      </span>
+                      <span class="truncate">${l.title}</span>
+                    </div>
+                    ${isBookmarked ? '<i class="fa-solid fa-bookmark text-[10px] text-amber-500 shrink-0"></i>' : ''}
+                  </div>
+                `;
+              }).join('')}
+
+              <!-- Practical Exercises -->
+              ${mod.exercises ? `
+                <div class="pt-1.5 mt-1 border-t border-slate-100 dark:border-slate-800/40">
+                  <div class="text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 px-2 mb-1">
+                    ⚡ Practical Exercises (${mod.exercises.length} Karke Dekhein)
+                  </div>
+                  ${mod.exercises.map(ex => {
+                    const exId = `${mod.id}-ex-${ex.num}`;
+                    const isDone = appState.completedExercises.includes(exId);
+                    const isCurrent = currentActiveLesson && currentActiveLesson.id === exId;
+                    const unlocked = isItemUnlocked(exId);
+                    return `
+                      <div
+                        onclick="${unlocked ? `navigateTo('lesson', '${exId}')` : `alert('🔒 Yeh exercise locked hai! Pichhla step pura karein ya Explore Mode use karein.')`}"
+                        class="flex items-center justify-between px-2.5 py-1 rounded-lg text-xs cursor-pointer transition ${
+                          !unlocked ? 'opacity-40 hover:opacity-75' :
+                          isCurrent
+                            ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 font-bold'
+                            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                        }"
+                      >
+                        <div class="flex items-center space-x-2 truncate">
+                          <span class="${isDone ? 'text-emerald-500' : (!unlocked ? 'text-amber-500' : 'text-slate-300 dark:text-slate-600')}">
+                            <i class="fa-${isDone ? 'solid fa-circle-check' : (!unlocked ? 'solid fa-lock text-[10px]' : 'regular fa-circle')}"></i>
+                          </span>
+                          <span class="truncate">Ex ${ex.num}: ${ex.title.replace(/^Exercise \d+:\s*/i, '')}</span>
+                        </div>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+              ` : ''}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleModuleAccordion(modId) {
+      const el = document.getElementById(`module-items-${modId}`);
+      const arrow = document.getElementById(`arrow-${modId}`);
+      if (el) {
+        el.classList.toggle('hidden');
+        if (arrow) arrow.classList.toggle('rotate-180');
+      }
+    }
+
+    // --- DASHBOARD VIEW ---
+    function renderDashboardView(container) {
+      const totalLessons = window.COURSE_MODULES.reduce((acc, m) => acc + m.lessons.length + (m.exercises ? m.exercises.length : 0), 0);
+      const totalCompleted = appState.completedLessons.length + appState.completedExercises.length;
+      const progressPercent = Math.round((totalCompleted / (totalLessons || 1)) * 100);
+
+      // Quiz analytics
+      const quizAttempts = Object.values(appState.quizScores);
+      const totalPoints = quizAttempts.reduce((acc, q) => acc + (q.score || 0), 0);
+      const avgPercentage = quizAttempts.length > 0
+        ? Math.round((totalPoints / (quizAttempts.length * 10)) * 100)
+        : 0;
+
+      container.innerHTML = `
+        <!-- Welcome Hero -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-sky-600 via-indigo-600 to-purple-700 p-8 text-white shadow-xl">
+          <div class="relative z-10 max-w-2xl">
+            <span class="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold tracking-wide uppercase mb-3">
+              🚀 Complete React, TypeScript & Redux Master System (A to Z)
+            </span>
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">
+              Namaste! React Mastery Journey Me Aapka Swagat Hai.
+            </h1>
+            <p class="text-sky-100 text-sm sm:text-base leading-relaxed mb-6">
+              Har concept ko aasan Hinglish + English me step-by-step samjhein, browser me hi live code run karein, 10 capstone production projects banayein, aur high-paying developer interviews ke liye 100% ready ho jayein.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <button onclick="navigateTo('lesson', '${appState.lastStudiedId || 'm1-what-is-react'}')" class="resume-lesson-btn px-6 py-3 rounded-xl font-extrabold text-sm transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2.5 cursor-pointer" style="background-color: #ffffff !important; color: #0f172a !important;">
+                <i class="fa-solid fa-circle-play text-sky-600 text-base"></i>
+                <span style="color: #0f172a !important; font-weight: 800;">Pichhla Lesson Chalu Karein</span>
+              </button>
+              <button onclick="navigateTo('roadmap')" class="px-5 py-2.5 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold text-sm transition flex items-center gap-2">
+                <i class="fa-solid fa-map"></i>
+                <span>Seekhne Ka Poora Roadmap Dekhein</span>
+              </button>
+            </div>
+          </div>
+          <!-- Decorative Background Elements -->
+          <i class="fa-brands fa-react absolute -right-12 -bottom-16 text-[220px] text-white/10 pointer-events-none"></i>
+        </div>
+
+        <!-- 4 METRIC STAT CARDS -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold uppercase">Kul Course Ki Pragati</span>
+              <i class="fa-solid fa-chart-pie text-sky-500"></i>
+            </div>
+            <div class="text-2xl font-black text-slate-900 dark:text-white">${progressPercent}%</div>
+            <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden mt-2">
+              <div class="bg-sky-500 h-full rounded-full transition-all duration-500" style="width: ${progressPercent}%"></div>
+            </div>
+            <div class="text-[11px] text-slate-500 mt-1">${totalCompleted} of ${totalLessons} items pura hua</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold uppercase">Quiz Score & Points</span>
+              <i class="fa-solid fa-trophy text-amber-500"></i>
+            </div>
+            <div class="text-2xl font-black text-slate-900 dark:text-white">${totalPoints} pts</div>
+            <div class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">Avg Score: ${avgPercentage}%</div>
+            <div class="text-[11px] text-slate-500 mt-1">${quizAttempts.length} quizzes attempt kiye</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold uppercase">Lagatar Padhai Ka Streak</span>
+              <i class="fa-solid fa-fire text-rose-500"></i>
+            </div>
+            <div class="text-2xl font-black text-slate-900 dark:text-white">${appState.streakDays} Days</div>
+            <div class="text-xs text-rose-600 dark:text-rose-400 font-semibold mt-1">Consistency Hi Kamyabi Hai! 🔥</div>
+            <div class="text-[11px] text-slate-500 mt-1">Daily padhkar momentum banaye rakhein</div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold uppercase">Capstone Projects</span>
+              <i class="fa-solid fa-diagram-project text-purple-500"></i>
+            </div>
+            <div class="text-2xl font-black text-slate-900 dark:text-white">${appState.completedProjects.length} / 10</div>
+            <div class="text-xs text-purple-600 dark:text-purple-400 font-semibold mt-1">Portfolio Ke Liye Ready</div>
+            <div class="text-[11px] text-slate-500 mt-1">Asli production standard apps</div>
+          </div>
+        </div>
+
+        <!-- 12 MODULES CURRICULUM GRID -->
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <i class="fa-solid fa-layer-group text-sky-500"></i>
+              <span>All 12 Learning Modules (From PDF Curriculum)</span>
+            </h3>
+            <span class="text-xs text-slate-400">Complete Beginner to Senior Pro</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            ${window.COURSE_MODULES.map(mod => {
+              const totalItems = mod.lessons.length + (mod.exercises ? mod.exercises.length : 0);
+              let comp = 0;
+              mod.lessons.forEach(l => { if (appState.completedLessons.includes(l.id)) comp++; });
+              if (mod.exercises) mod.exercises.forEach(ex => { if (appState.completedExercises.includes(`${mod.id}-ex-${ex.num}`)) comp++; });
+              const pct = Math.round((comp / (totalItems || 1)) * 100);
+
+              return `
+                <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-400 dark:hover:border-sky-500 transition shadow-sm group">
+                  <div class="flex items-start justify-between mb-3">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300">
+                      PART ${mod.number}
+                    </span>
+                    <span class="text-xs font-semibold text-slate-400">${pct}%</span>
+                  </div>
+                  <h4 class="font-bold text-slate-900 dark:text-white group-hover:text-sky-500 transition line-clamp-1 mb-1">
+                    ${mod.title}
+                  </h4>
+                  <div class="text-xs text-amber-600 dark:text-amber-400 font-medium mb-2 line-clamp-1">
+                    ${mod.hindiTitle}
+                  </div>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-4 leading-relaxed">
+                    ${mod.description}
+                  </p>
+                  <div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden mb-3">
+                    <div class="bg-sky-500 h-full rounded-full" style="width: ${pct}%"></div>
+                  </div>
+                  <button
+                    onclick="navigateTo('lesson', '${mod.lessons[0].id}')"
+                    class="w-full py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-sky-600 hover:text-white dark:hover:bg-sky-600 dark:hover:text-white text-slate-700 dark:text-slate-300 font-bold text-xs transition flex items-center justify-center gap-1.5"
+                  >
+                    <span>Start Module</span>
+                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                  </button>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // --- ROADMAP VIEW ---
+    function renderRoadmapView(container) {
+      container.innerHTML = `
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="max-w-2xl mb-8">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-500">Structured Path</span>
+            <h2 class="text-2xl font-black text-slate-900 dark:text-white mt-1 mb-2">🗺️ Complete Developer Career Roadmap</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+              Yeh 12-stage milestone roadmap aapko absolute beginner se professional industry-ready developer banata hai. Har module pichhle concepts par aadharit hai.
+            </p>
+          </div>
+          <div class="relative border-l-2 border-sky-400/30 dark:border-sky-500/30 ml-4 space-y-8 pb-4">
+            ${window.COURSE_MODULES.map((m, i) => {
+              const totalItems = m.lessons.length + (m.exercises ? m.exercises.length : 0);
+              let comp = 0;
+              m.lessons.forEach(l => { if (appState.completedLessons.includes(l.id)) comp++; });
+              if (m.exercises) m.exercises.forEach(ex => { if (appState.completedExercises.includes(`${m.id}-ex-${ex.num}`)) comp++; });
+              const isDone = comp >= totalItems && totalItems > 0;
+
+              return `
+                <div class="relative pl-6">
+                  <div class="absolute -left-3 top-1.5 w-6 h-6 rounded-full border-2 border-sky-500 bg-white dark:bg-slate-900 flex items-center justify-center text-[10px] font-bold text-sky-600 dark:text-sky-400">
+                    ${isDone ? '✓' : i + 1}
+                  </div>
+                  <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/60 hover:border-sky-400 transition">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-xs font-bold text-sky-600 dark:text-sky-400">STAGE ${m.number} • ${m.badge}</span>
+                      <span class="text-xs text-slate-400">${comp}/${totalItems} Completed</span>
+                    </div>
+                    <h4 class="font-bold text-base text-slate-900 dark:text-white">${m.title}</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 mb-3">${m.description}</p>
+                    <button onclick="navigateTo('lesson', '${m.lessons[0].id}')" class="px-3 py-1.5 rounded-lg bg-sky-600 text-white font-bold text-xs hover:bg-sky-500 transition">
+                      Stage ${m.number} Me Dakhil Hon →
+                    </button>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // --- LESSON VIEW (13-Part Teaching Structure) ---
+    function renderLessonView(container, itemId) {
+      const found = findItemById(itemId);
+      if (!found) {
+        container.innerHTML = `<div class="p-8 text-center text-red-500">Item not found: ${itemId}</div>`;
+        return;
+      }
+
+      currentActiveLesson = found;
+      appState.lastStudiedId = itemId;
+      persistState();
+
+      const { item, module, type } = found;
+      const isExercise = type === 'exercise';
+      const isCompleted = isExercise
+        ? appState.completedExercises.includes(found.id)
+        : appState.completedLessons.includes(item.id);
+      const isBookmarked = appState.bookmarks.includes(itemId);
+
+      // Update right sidebar contextual data
+      const checklistDone = document.getElementById('chk-quiz-done');
+      if (checklistDone) checklistDone.checked = isCompleted;
+
+      container.innerHTML = `
+        <!-- Top Breadcrumbs & Title Bar -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 text-xs text-slate-400">
+            <span class="cursor-pointer hover:text-sky-500" onclick="navigateTo('dashboard')">Home</span>
+            <span>/</span>
+            <span>Part ${module.number}: ${module.title}</span>
+            <span>/</span>
+            <span class="text-slate-800 dark:text-slate-200 font-semibold">${item.title}</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${
+                  isExercise ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300'
+                }">
+                  ${isExercise ? 'Practical Exercise' : item.level || 'Concept'}
+                </span>
+                <span class="text-xs px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 font-bold border border-amber-300/40">
+                  🇮🇳 Hinglish + Simple English Margdarshak
+                </span>
+              </div>
+              <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                ${item.title}
+              </h1>
+            </div>
+
+            <!-- Header Action Buttons -->
+            <div class="flex items-center gap-2 shrink-0">
+              <button
+                onclick="toggleCurrentBookmark()"
+                class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold transition flex items-center gap-1.5"
+              >
+                <i class="fa-${isBookmarked ? 'solid' : 'regular'} fa-bookmark text-amber-500"></i>
+                <span>${isBookmarked ? 'Bookmarked' : 'Bookmark'}</span>
+              </button>
+              <button
+                onclick="toggleCurrentLessonCompletion()"
+                class="px-4 py-2 rounded-xl ${
+                  isCompleted ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-emerald-500 hover:text-white'
+                } text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
+              >
+                <i class="fa-solid fa-check"></i>
+                <span>${isCompleted ? 'Completed ✓' : 'Mark as Done'}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-TAB NAVIGATION CONTROLLER -->
+        <div class="border-b border-slate-200 dark:border-slate-800 flex gap-4 overflow-x-auto text-sm font-bold">
+          <button
+            onclick="switchLessonTab('guide')"
+            id="tab-btn-guide"
+            class="py-3 px-1 border-b-2 border-sky-500 text-sky-600 dark:text-sky-400 flex items-center gap-2"
+          >
+            <i class="fa-solid fa-book-open"></i>
+            <span>16-Step Sampurna Guide (Hinglish)</span>
+          </button>
+          <button
+            onclick="switchLessonTab('sandbox')"
+            id="tab-btn-sandbox"
+            class="py-3 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 flex items-center gap-2"
+          >
+            <i class="fa-solid fa-code"></i>
+            <span>Interactive Code Sandbox (Live Run)</span>
+          </button>
+          <button
+            onclick="switchLessonTab('quiz')"
+            id="tab-btn-quiz"
+            class="py-3 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 flex items-center gap-2"
+          >
+            <i class="fa-solid fa-circle-question"></i>
+            <span>Quiz & Knowledge Check (+10 Pts)</span>
+          </button>
+          <button
+            onclick="switchLessonTab('notes')"
+            id="tab-btn-notes"
+            class="py-3 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 flex items-center gap-2"
+          >
+            <i class="fa-solid fa-pen-to-square"></i>
+            <span>Aapke Likhe Notes</span>
+          </button>
+        </div>
+
+        <!-- TAB CONTENT CONTAINER -->
+        <div id="lesson-tab-content" class="space-y-6">
+          ${getLessonTabHtml('guide', found)}
+        </div>
+
+        <!-- BOTTOM NAVIGATION (Prev / Mark Done / Next) -->
+        <div class="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-slate-800">
+          <button onclick="goToAdjacentLesson(-1)" class="px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold transition flex items-center gap-2">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Previous</span>
+          </button>
+          <button onclick="toggleCurrentLessonCompletion()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-md shadow-emerald-600/20">
+            ${isCompleted ? '✓ Completed' : 'Mark as Completed'}
+          </button>
+          <button onclick="goToAdjacentLesson(1)" class="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold transition shadow-md shadow-sky-600/20 flex items-center gap-2">
+            <span>Next</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      `;
+    }
+
+    function switchLessonTab(tab) {
+      currentActiveTab = tab;
+      ['guide', 'sandbox', 'quiz', 'notes'].forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (btn) {
+          if (t === tab) {
+            btn.className = 'py-3 px-1 border-b-2 border-sky-500 text-sky-600 dark:text-sky-400 flex items-center gap-2 font-bold';
+          } else {
+            btn.className = 'py-3 px-1 border-b-2 border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 flex items-center gap-2 font-bold';
+          }
+        }
+      });
+
+      const content = document.getElementById('lesson-tab-content');
+      if (content && currentActiveLesson) {
+        content.innerHTML = getLessonTabHtml(tab, currentActiveLesson);
+        if (tab === 'sandbox') {
+          initLiveSandbox();
+        }
+      }
+    }
+
+    function getLessonTabHtml(tab, found) {
+      const { item, module, type } = found;
+      const isExercise = type === 'exercise';
+
+      if (tab === 'guide') {
+        if (type === 'exercise') {
+          return `
+            <div class="space-y-6">
+              <!-- Exercise Instructions Card -->
+              <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                  <i class="fa-solid fa-dumbbell text-emerald-500"></i>
+                  <span>Exercise Instructions & Objectives</span>
+                </h3>
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  ${item.instructions}
+                </p>
+              </div>
+
+              <!-- Complete Solution Code -->
+              <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                  <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                    Runnable Solution Implementation
+                  </h3>
+                  <button onclick="copyCodeText('${escapeQuotes(item.solutionCode)}')" class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white transition">
+                    <i class="fa-regular fa-copy"></i> Code Copy Karein Code
+                  </button>
+                </div>
+                <pre class="p-4 rounded-xl bg-slate-950 text-slate-100 font-mono text-xs overflow-x-auto leading-relaxed border border-slate-800">${escapeHtml(item.solutionCode)}</pre>
+              </div>
+
+              <div class="p-4 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 flex items-center justify-between">
+                <span class="text-xs text-sky-800 dark:text-sky-300 font-semibold">Ready to test and tweak this exercise live in the browser?</span>
+                <button onclick="switchLessonTab('sandbox')" class="px-3.5 py-1.5 rounded-lg bg-sky-600 text-white font-bold text-xs hover:bg-sky-500 transition">
+                  Open in Interactive Sandbox →
+                </button>
+              </div>
+            </div>
+          `;
+        }
+
+        // 13-Point Complete Concept Guide
+        return `
+          <div class="space-y-6">
+            <!-- 1. Topic Introduction -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="text-[11px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">1. Topic Introduction (Vishay Ka Parichay)</span>
+              <p class="text-base text-slate-700 dark:text-slate-200 font-medium leading-relaxed mt-1">
+                ${item.intro}
+              </p>
+            </div>
+
+            <!-- 2. What is it? & 3. Why do we need it? -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <span class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">2. What is it? (Yeh Kya Hai - Aasan Shabdo Me)</span>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                  ${item.whatIsIt}
+                </p>
+              </div>
+              <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">3. Why do we need it? (Iski Zaroorat Kyun Hai? Problem Solved)</span>
+                <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                  ${item.whyNeeded}
+                </p>
+              </div>
+            </div>
+
+            <!-- 4. Real-life Analogy -->
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border-l-4 border-amber-500 dark:bg-slate-900/80 p-5 rounded-r-2xl border border-amber-200/40 dark:border-amber-800/40 shadow-sm">
+              <div class="flex items-center gap-2 text-amber-700 dark:text-amber-400 font-bold text-xs uppercase tracking-wider mb-2">
+                <span>💡 4. Real-Life Analogy (Asli Zindagi Ka Example / Mazedaar Analogy)</span>
+              </div>
+              <p class="text-sm text-slate-700 dark:text-slate-200 italic leading-relaxed">
+                "${item.analogy}"
+              </p>
+            </div>
+
+            <!-- 5. Technical Explanation & Internal Architecture -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="text-[11px] font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider">5. Technical Explanation & Internal Architecture (Under the Hood: Fiber, VDOM & Reconciliation)</span>
+              <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                ${item.technicalExplanation}
+              </p>
+            </div>
+
+            <!-- 6. Important Terminology -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">6. Important Terminology (Zaroori Technical Shabd & Definitions)</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 text-xs">
+                  <strong class="text-indigo-600 dark:text-indigo-400">Virtual DOM & Fiber:</strong> In-memory tree structure jise React real browser DOM se pehle modify aur batch karta hai.
+                </div>
+                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 text-xs">
+                  <strong class="text-indigo-600 dark:text-indigo-400">Immutability:</strong> State ko direct mutate na karke hamesha naya object ya array reference return karna.
+                </div>
+                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 text-xs">
+                  <strong class="text-indigo-600 dark:text-indigo-400">Reconciliation / Diffing:</strong> React ka heuristic algorithm jo purani aur nayi state ke beech minimal changes calculate karta hai.
+                </div>
+                <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 text-xs">
+                  <strong class="text-indigo-600 dark:text-indigo-400">Declarative UI:</strong> Hum batate hain UI kaisa DIKHNA chahiye, DOM manipulation React khud sambhalta hai.
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Syntax Explanation & 8. Step-by-Step Code -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[11px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">7. Syntax Explanation (Code Likhne Ka Niyam)</span>
+                <button onclick="copyCodeText('${escapeQuotes(item.syntax)}')" class="text-xs px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-sky-500 hover:text-white transition">
+                  <i class="fa-regular fa-copy"></i> Syntax Copy Karein
+                </button>
+              </div>
+              <pre class="p-4 rounded-xl bg-slate-950 text-sky-300 font-mono text-xs overflow-x-auto leading-relaxed border border-slate-800 mb-4">${escapeHtml(item.syntax)}</pre>
+              <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                <strong>8. Step-by-Step Breakdown (Line-by-Line Code Ka Matlab):</strong> ${item.codeExplanation}
+              </div>
+            </div>
+
+            <!-- 9. Expected Output & 10. Practical Implementation -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">9. Expected Output (Screen Par Kya Output Dikhega)</span>
+              <div class="p-3 my-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300 text-xs font-mono">
+                ${item.expectedOutput}
+              </div>
+              <span class="text-[11px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider block mt-4 mb-2">10. Practical Implementation (Real Project Implementation Code)</span>
+              <pre class="p-4 rounded-xl bg-slate-950 text-slate-100 font-mono text-xs overflow-x-auto leading-relaxed border border-slate-800">${escapeHtml(item.practicalImplementation)}</pre>
+            </div>
+
+            <!-- 11. Real-World Use Cases -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="text-[11px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider">11. Real-World Enterprise Use Cases (Asli Projects Me Kahan Use Hota Hai)</span>
+              <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                🏢 E-commerce (Amazon, Flipkart), SaaS dashboards (Notion, Linear), aur streaming apps (Netflix, Spotify) is pattern ka use karke high-traffic dynamic data ko bina latency render karte hain.
+              </p>
+            </div>
+
+            <!-- 12. Common Mistakes -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="text-[11px] font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">12. Common Mistakes & Pitfalls (Bohot Log Yeh Galti Karte Hain - Kaise Bachen)</span>
+              <div class="mt-2 p-4 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/60 text-xs text-rose-900 dark:text-rose-200 whitespace-pre-line leading-relaxed">
+                ${item.commonMistakes}
+              </div>
+            </div>
+
+            <!-- 13. Debugging Strategies & Error Solutions -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="text-[11px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">13. Debugging Strategies & Error Solutions (Problem Solving Guide)</span>
+              <div class="space-y-2 mt-2 text-xs text-slate-600 dark:text-slate-300">
+                <div class="p-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60">
+                  ⚠️ <strong>Error: "Cannot update a component while rendering a different component"</strong><br />
+                  Fix: State updates ko event handlers ya <code>useEffect</code> ke andar karein, direct component body me render phase par set function call na karein.
+                </div>
+                <div class="p-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60">
+                  ⚠️ <strong>Error: "Each child in a list should have a unique 'key' prop"</strong><br />
+                  Fix: List items par array index ke bajay stable unique ID (jaise <code>item.id</code>) pass karein.
+                </div>
+              </div>
+            </div>
+
+            <!-- 14. Top Interview Questions -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="text-[11px] font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider">14. Top Interview Questions (Interview Me Poochhe Jane Wale Sawaal-Jawaab)</span>
+              <div class="mt-3 space-y-3">
+                ${item.interviewQuestions.map((iq, i) => `
+                  <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60">
+                    <div class="font-bold text-xs text-slate-900 dark:text-white mb-1">Q${i + 1}: ${iq.q}</div>
+                    <div class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">${iq.a}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- 15. Mini Assignment -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span class="text-[11px] font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">15. Mini Assignment (Aapke Liye Practice Task)</span>
+              <p class="text-sm text-slate-700 dark:text-slate-300 mt-2 font-medium">
+                🎯 ${item.assignment}
+              </p>
+            </div>
+
+            <!-- 16. Quick Knowledge-Check Quiz Card -->
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-emerald-500/10 via-sky-500/10 to-transparent border border-emerald-500/30 dark:bg-slate-900 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">16. Quick Knowledge-Check Quiz</span>
+                <h4 class="font-bold text-base text-slate-900 dark:text-white mt-1">Ready to test your concept retention?</h4>
+                <p class="text-xs text-slate-500">Attempt this lesson's MCQ to earn +10 points and verify mastery.</p>
+              </div>
+              <button onclick="switchLessonTab('quiz')" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-md shadow-emerald-600/20">
+                Take Quiz (+10 Pts) →
+              </button>
+            </div>
+          </div>
+        `;
+      }
+
+      if (tab === 'sandbox') {
+        const initialCode = isExercise ? (item.solutionCode || item.codeTemplate || '// Write React code here') : (item.codeTemplate || item.practicalImplementation || '// Write React code here');
+        return `
+          <div class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-terminal text-sky-500"></i>
+                <span>React 18 In-Browser Live Execution Engine</span>
+              </span>
+              <div class="flex items-center gap-2 flex-wrap">
+                <button onclick="resetSandboxCode()" class="text-xs px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-semibold transition flex items-center gap-1.5">
+                  <i class="fa-solid fa-arrow-rotate-left"></i>
+                  <span>Reset Code</span>
+                </button>
+                <button onclick="copyCurrentSandboxCode()" class="text-xs px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-semibold transition flex items-center gap-1.5">
+                  <i class="fa-regular fa-copy"></i>
+                  <span>Copy Code</span>
+                </button>
+                <button onclick="executeSandboxCode()" class="text-xs px-4 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-bold transition shadow-md shadow-sky-600/20 flex items-center gap-1.5">
+                  <i class="fa-solid fa-play"></i>
+                  <span>▶ Run Code (Live Chalao)</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Editor + Live Preview Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              <!-- Code Editor Box -->
+              <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 flex flex-col shadow-lg">
+                <div class="px-4 py-2.5 bg-slate-900 border-b border-slate-800 text-xs font-mono text-slate-400 flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+                    <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+                    <span class="ml-2 font-bold text-slate-300">LiveComponent.jsx</span>
+                  </div>
+                  <span class="text-[11px] text-sky-400">Babel JSX Transpiler</span>
+                </div>
+                <textarea
+                  id="code-editor-textarea"
+                  class="w-full h-80 lg:h-96 p-4 bg-transparent text-sky-200 font-mono text-xs focus:outline-none resize-none leading-relaxed vscode-editor"
+                  spellcheck="false"
+                >${escapeHtml(initialCode)}</textarea>
+              </div>
+
+              <!-- Live Render Frame Box -->
+              <div class="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-col shadow-lg">
+                <div class="px-4 py-2.5 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300 flex items-center justify-between">
+                  <span class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-display text-emerald-500"></i>
+                    <span>Live Interactive Component Output</span>
+                  </span>
+                  <span id="sandbox-status-badge" class="text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 rounded font-mono font-bold">Ready</span>
+                </div>
+                <div id="live-react-preview" class="flex-1 p-4 overflow-auto min-h-[280px]">
+                  <!-- Rendered dynamically -->
+                </div>
+                <div id="sandbox-console" class="p-3 bg-slate-950 border-t border-slate-800 font-mono text-[11px] text-slate-400 max-h-24 overflow-y-auto">
+                  <div class="text-slate-500">// Console output logs appear here:</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      if (tab === 'quiz') {
+        const quiz = isExercise ? {
+          question: `What did you learn from ${item.title}?`,
+          options: [
+            "It showed how to implement the requirement step-by-step",
+            "It had no real-world value",
+            "It should only be run on Internet Explorer",
+            "It requires Redux for basic state"
+          ],
+          answer: 0,
+          explanation: "Every practical exercise demonstrates an essential real-world pattern required in technical interviews."
+        } : (item.quiz || {
+          question: `What is the primary concept of ${item.title}?`,
+          options: [
+            "React declarative architecture and state handling",
+            "Direct Real DOM manipulation",
+            "Writing inline assembly instructions",
+            "HTML4 table layout patterns"
+          ],
+          answer: 0,
+          explanation: "React components manage UI declaratively through state and unidirectional data flow."
+        });
+
+        const previousScore = appState.quizScores[found.id || item.id];
+
+        return `
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto space-y-6">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">
+                16. Knowledge Check Quiz (+10 Points Challenge)
+              </span>
+              ${previousScore ? `
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                  Completed: +${previousScore.score} pts
+                </span>
+              ` : ''}
+            </div>
+
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white leading-snug">
+              ${quiz.question}
+            </h3>
+
+            <div class="space-y-2.5" id="quiz-options-container">
+              ${quiz.options.map((opt, i) => `
+                <button
+                  onclick="handleQuizOptionClick(${i})"
+                  class="w-full text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-purple-500 dark:hover:border-purple-500 hover:bg-purple-50/50 dark:hover:bg-slate-800/50 text-sm font-medium text-slate-700 dark:text-slate-200 transition flex items-center gap-3"
+                  id="quiz-opt-${i}"
+                >
+                  <span class="w-6 h-6 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center text-xs font-bold text-slate-500 shrink-0">
+                    ${String.fromCharCode(65 + i)}
+                  </span>
+                  <span>${opt}</span>
+                </button>
+              `).join('')}
+            </div>
+
+            <div id="quiz-feedback-box" class="hidden p-4 rounded-xl text-xs leading-relaxed"></div>
+          </div>
+        `;
+      }
+
+      if (tab === 'notes') {
+        const savedNote = appState.notes[found.id || item.id] || '';
+        return `
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl mx-auto space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-pen-nib text-amber-500"></i>
+                <span>Personal Learning Notes for this Topic</span>
+              </h3>
+              <span id="note-saved-status" class="text-xs text-slate-400">Auto-saved to LocalStorage</span>
+            </div>
+            <textarea
+              id="lesson-note-textarea"
+              oninput="handleNoteChange('${found.id || item.id}')"
+              placeholder="Write personal insights, key interview takeaways, or doubts here..."
+              rows="8"
+              class="w-full p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-sm focus:outline-none focus:border-sky-500 transition leading-relaxed"
+            >${savedNote}</textarea>
+          </div>
+        `;
+      }
+
+      return '';
+    }
+
+    // --- INTERACTIVE CODE SANDBOX EXECUTION ---
+    function initLiveSandbox() {
+      setTimeout(() => {
+        executeSandboxCode();
+      }, 60);
+    }
+
+    function resetSandboxCode() {
+      if (!currentActiveLesson) return;
+      const isExercise = currentActiveLesson.type === 'exercise';
+      const defaultCode = isExercise
+        ? (currentActiveLesson.item.solutionCode || currentActiveLesson.item.codeTemplate)
+        : (currentActiveLesson.item.codeTemplate || currentActiveLesson.item.practicalImplementation);
+      const editor = document.getElementById('code-editor-textarea');
+      if (editor && defaultCode) {
+        editor.value = defaultCode;
+        executeSandboxCode();
+      }
+    }
+
+    function copyCurrentSandboxCode() {
+      const editor = document.getElementById('code-editor-textarea');
+      if (editor) {
+        copyCodeText(editor.value);
+      }
+    }
+
+    function executeSandboxCode() {
+      const editor = document.getElementById('code-editor-textarea');
+      const preview = document.getElementById('live-react-preview');
+      const consoleBox = document.getElementById('sandbox-console');
+      const statusBadge = document.getElementById('sandbox-status-badge');
+
+      if (!editor || !preview) return;
+
+      const userCode = editor.value;
+      if (consoleBox) consoleBox.innerHTML = '<div class="text-slate-500">// Console logs:</div>';
+
+      if (!userCode.trim()) {
+        preview.innerHTML = '<div class="p-4 text-slate-400 text-xs font-mono">Editor is empty. Write or reset code and click Run Code.</div>';
+        return;
+      }
+
+      try {
+        if (typeof Babel === 'undefined') {
+          preview.innerHTML = '<div class="p-4 text-amber-500 text-xs font-mono">⏳ Loading Babel compiler... Please wait a moment and click Run Code again.</div>';
+          return;
+        }
+
+        // Transpile JSX using Babel Standalone
+        const transpiled = Babel.transform(userCode, {
+          presets: ['react', 'env'],
+          plugins: []
+        }).code;
+
+        // Clean preview target
+        preview.innerHTML = '<div id="live-target-root"></div>';
+        const rootContainer = document.getElementById('live-target-root');
+
+        // Safe render function
+        const render = (componentInstance) => {
+          try {
+            if (typeof ReactDOM !== 'undefined') {
+              if (ReactDOM.createRoot) {
+                const root = ReactDOM.createRoot(rootContainer);
+                root.render(componentInstance);
+              } else if (ReactDOM.render) {
+                ReactDOM.render(componentInstance, rootContainer);
+              }
+            }
+          } catch (rErr) {
+            console.error(rErr);
+            preview.innerHTML = `<div class="p-3 text-rose-500 text-xs font-mono">Render Error: ${rErr.message}</div>`;
+          }
+        };
+
+        // Custom console interceptor
+        const customConsole = {
+          log: (...args) => {
+            console.log(...args);
+            if (consoleBox) {
+              const line = document.createElement('div');
+              line.className = 'text-sky-400 mt-0.5';
+              line.textContent = '• ' + args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ');
+              consoleBox.appendChild(line);
+            }
+          },
+          warn: (...args) => {
+            console.warn(...args);
+            if (consoleBox) {
+              const line = document.createElement('div');
+              line.className = 'text-amber-400 mt-0.5';
+              line.textContent = '▲ ' + args.join(' ');
+              consoleBox.appendChild(line);
+            }
+          },
+          error: (...args) => {
+            console.error(...args);
+            if (consoleBox) {
+              const line = document.createElement('div');
+              line.className = 'text-rose-400 mt-0.5';
+              line.textContent = '✕ ' + args.join(' ');
+              consoleBox.appendChild(line);
+            }
+          }
+        };
+
+        const runner = new Function('React', 'ReactDOM', 'render', 'console', transpiled);
+        runner(React, ReactDOM, render, customConsole);
+
+        if (statusBadge) {
+          statusBadge.textContent = 'Rendered Successfully ✓';
+          statusBadge.className = 'text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 px-2 py-0.5 rounded font-mono font-bold';
+        }
+
+        const chk = document.getElementById('chk-ran-code');
+        if (chk) chk.checked = true;
+
+      } catch (err) {
+        console.error(err);
+        preview.innerHTML = `
+          <div class="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-rose-800 dark:text-rose-200 text-xs font-mono leading-relaxed">
+            <div class="font-bold mb-1">⚠️ Compilation / Runtime Error:</div>
+            <div>${err.message}</div>
+          </div>
+        `;
+        if (statusBadge) {
+          statusBadge.textContent = 'Execution Error';
+          statusBadge.className = 'text-[10px] bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300 px-2 py-0.5 rounded font-mono font-bold';
+        }
+      }
+    }
+
+    // --- QUIZ SUBMISSION HANDLER ---
+    function handleQuizOptionClick(selectedIndex) {
+      if (!currentActiveLesson) return;
+      const isExercise = currentActiveLesson.type === 'exercise';
+      const item = currentActiveLesson.item;
+      const quiz = isExercise ? {
+        question: `What did you learn from ${item.title}?`,
+        options: [
+          "It showed how to implement the requirement step-by-step",
+          "It had no real-world value",
+          "It should only be run on Internet Explorer",
+          "It requires Redux for basic state"
+        ],
+        answer: 0,
+        explanation: "Every practical exercise demonstrates an essential real-world pattern required in technical interviews."
+      } : (item.quiz || {
+        question: `What is the primary concept of ${item.title}?`,
+        options: [
+          "React declarative architecture and state handling",
+          "Direct Real DOM manipulation",
+          "Writing inline assembly instructions",
+          "HTML4 table layout patterns"
+        ],
+        answer: 0,
+        explanation: "React components manage UI declaratively through state and unidirectional data flow."
+      });
+
+      const feedback = document.getElementById('quiz-feedback-box');
+      if (!feedback) return;
+
+      const isCorrect = selectedIndex === quiz.answer;
+      feedback.classList.remove('hidden');
+
+      // Visual feedback on all option buttons
+      for (let i = 0; i < quiz.options.length; i++) {
+        const optBtn = document.getElementById(`quiz-opt-${i}`);
+        if (optBtn) {
+          if (i === quiz.answer) {
+            optBtn.className = 'w-full text-left p-3.5 rounded-xl border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950/60 text-sm font-bold text-emerald-800 dark:text-emerald-300 transition flex items-center gap-3';
+          } else if (i === selectedIndex && !isCorrect) {
+            optBtn.className = 'w-full text-left p-3.5 rounded-xl border-2 border-rose-500 bg-rose-50 dark:bg-rose-950/60 text-sm font-bold text-rose-800 dark:text-rose-300 transition flex items-center gap-3';
+          } else {
+            optBtn.className = 'w-full text-left p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 text-sm text-slate-500 dark:text-slate-400 opacity-50 flex items-center gap-3';
+          }
+        }
+      }
+
+      const itemId = currentActiveLesson.id || item.id;
+      if (isCorrect) {
+        if (typeof confetti === 'function') confetti({ particleCount: 50, spread: 60, origin: { y: 0.8 } });
+        feedback.className = 'p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 text-xs leading-relaxed block';
+        feedback.innerHTML = `<strong>🎉 Zabardast! Bilkul Sahi Jawaab (+10 Points)!</strong><br /><p class="mt-1">${quiz.explanation}</p>`;
+
+        appState.quizScores[itemId] = { score: 10, date: new Date().toISOString() };
+        persistState();
+
+        const chk = document.getElementById('chk-quiz-done');
+        if (chk) chk.checked = true;
+      } else {
+        feedback.className = 'p-4 rounded-xl bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200 text-xs leading-relaxed block';
+        feedback.innerHTML = `<strong>❌ Galat Jawaab!</strong><br /><p class="mt-1">${quiz.explanation}</p>`;
+        appState.quizScores[itemId] = { score: 0, date: new Date().toISOString() };
+        persistState();
+      }
+    }
+
+    // Legacy fallback for any direct calls
+    function handleQuizSubmit(selectedIndex, correctIndex, explanation, itemId) {
+      handleQuizOptionClick(selectedIndex);
+    }
+
+    // --- NOTES HANDLER ---
+    function handleNoteChange(itemId) {
+      const text = document.getElementById('lesson-note-textarea').value;
+      appState.notes[itemId] = text;
+      persistState();
+      const status = document.getElementById('note-saved-status');
+      if (status) {
+        status.textContent = 'Saved at ' + new Date().toLocaleTimeString();
+      }
+    }
+
+    // --- COMPLETION & BOOKMARK TOGGLES ---
+    function toggleCurrentLessonCompletion() {
+      if (!currentActiveLesson) return;
+      const { id, item, type } = currentActiveLesson;
+      const targetId = id || item.id;
+      const isExercise = type === 'exercise';
+      const arr = isExercise ? appState.completedExercises : appState.completedLessons;
+
+      const idx = arr.indexOf(targetId);
+      if (idx > -1) {
+        arr.splice(idx, 1);
+      } else {
+        arr.push(targetId);
+        confetti({ particleCount: 40, spread: 45, origin: { y: 0.9 } });
+      }
+      persistState();
+      navigateTo('lesson', targetId);
+    }
+
+    function toggleCurrentBookmark() {
+      if (!currentActiveLesson) return;
+      const targetId = currentActiveLesson.id || currentActiveLesson.item.id;
+      const idx = appState.bookmarks.indexOf(targetId);
+      if (idx > -1) {
+        appState.bookmarks.splice(idx, 1);
+      } else {
+        appState.bookmarks.push(targetId);
+      }
+      persistState();
+      navigateTo('lesson', targetId);
+    }
+
+    function goToAdjacentLesson(offset) {
+      if (!currentActiveLesson) return;
+      const allIds = [];
+      window.COURSE_MODULES.forEach(m => {
+        m.lessons.forEach(l => allIds.push(l.id));
+        if (m.exercises) m.exercises.forEach(ex => allIds.push(`${m.id}-ex-${ex.num}`));
+      });
+
+      const currentId = currentActiveLesson.id || currentActiveLesson.item.id;
+      const currentIndex = allIds.indexOf(currentId);
+      const nextIndex = currentIndex + offset;
+      if (nextIndex >= 0 && nextIndex < allIds.length) {
+        navigateTo('lesson', allIds[nextIndex]);
+      }
+    }
+
+    // --- 10 CAPSTONE PROJECTS VIEW ---
+    function renderProjectsView(container, targetId) {
+      const projects = window.COURSE_PROJECTS;
+      const activeProj = targetId ? projects.find(p => p.id === targetId) : projects[0];
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Hands-on Portfolio</span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+                💻 10 Capstone Production Projects
+              </h2>
+            </div>
+            <span class="text-xs text-slate-500">${appState.completedProjects.length} of 10 Completed</span>
+          </div>
+
+          <!-- Horizontal Project Tabs -->
+          <div class="flex gap-2 overflow-x-auto pb-2">
+            ${projects.map(p => `
+              <button
+                onclick="navigateTo('projects', '${p.id}')"
+                class="px-3.5 py-2 rounded-xl text-xs font-bold shrink-0 transition ${
+                  activeProj.id === p.id
+                    ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
+                    : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100'
+                }"
+              >
+                ${p.title}
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Active Project Showcase -->
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4">
+              <div>
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                  ${activeProj.difficulty} • ${activeProj.badge}
+                </span>
+                <h3 class="text-2xl font-black text-slate-900 dark:text-white mt-1.5">${activeProj.title}</h3>
+                <p class="text-sm text-slate-500 mt-1">${activeProj.summary}</p>
+              </div>
+              <button
+                onclick="toggleProjectCompleted('${activeProj.id}')"
+                class="px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
+                  appState.completedProjects.includes(activeProj.id)
+                    ? 'bg-emerald-600 text-white'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                }"
+              >
+                ${appState.completedProjects.includes(activeProj.id) ? '✓ Project Finished' : 'Mark as Built'}
+              </button>
+            </div>
+
+            <!-- Requirements & Steps Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider mb-3">Project Requirements:</h4>
+                <ul class="space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
+                  ${activeProj.requirements.map(r => `<li class="flex items-start gap-2"><span>✓</span><span>${r}</span></li>`).join('')}
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider mb-3">Folder Structure:</h4>
+                <pre class="p-3.5 rounded-xl bg-slate-950 text-sky-300 font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800">${activeProj.folderStructure}</pre>
+              </div>
+            </div>
+
+            <!-- Step by Step Guide -->
+            <div>
+              <h4 class="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider mb-2">Step-by-Step Implementation:</h4>
+              <div class="space-y-1.5">
+                ${activeProj.steps.map(s => `
+                  <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60">
+                    ${s}
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Complete Project Code & Live Preview -->
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <h4 class="font-bold text-sm text-slate-900 dark:text-white uppercase tracking-wider">Complete Source Code:</h4>
+                <button onclick="copyCodeText('${escapeQuotes(activeProj.runnableCode)}')" class="text-xs px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500 hover:text-white transition">
+                  <i class="fa-regular fa-copy"></i> Copy Code
+                </button>
+              </div>
+              <pre class="p-4 rounded-xl bg-slate-950 text-slate-100 font-mono text-xs overflow-x-auto leading-relaxed border border-slate-800 mb-4">${escapeHtml(activeProj.runnableCode)}</pre>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function toggleProjectCompleted(projId) {
+      const idx = appState.completedProjects.indexOf(projId);
+      if (idx > -1) {
+        appState.completedProjects.splice(idx, 1);
+      } else {
+        appState.completedProjects.push(projId);
+        confetti({ particleCount: 50, spread: 60 });
+      }
+      persistState();
+      navigateTo('projects', projId);
+    }
+
+    // --- INTERVIEW PREPARATION VIEW ---
+    function renderInterviewsView(container) {
+      const questions = window.INTERVIEW_QUESTIONS;
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span class="text-xs font-bold text-purple-600 uppercase tracking-wider">Career & Job Readiness (Top MNCs & Startups)</span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+                🎯 React Developer Interview Preparation
+              </h2>
+            </div>
+            <span class="text-xs text-slate-500">${questions.length} Comprehensive Q&A Artifacts</span>
+          </div>
+
+          <!-- Interview Questions Accordion Grid -->
+          <div class="space-y-3">
+            ${questions.map((q, i) => `
+              <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden shadow-sm">
+                <button
+                  onclick="toggleInterviewAccordion('iq-${i}')"
+                  class="w-full p-4 text-left flex items-start justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition"
+                >
+                  <div>
+                    <div class="flex items-center gap-2 mb-1">
+                      <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300">
+                        ${q.category}
+                      </span>
+                      <span class="text-[10px] text-slate-400 font-semibold">${q.tag}</span>
+                    </div>
+                    <div class="font-bold text-sm text-slate-900 dark:text-white leading-snug">
+                      ${q.question}
+                    </div>
+                  </div>
+                  <i class="fa-solid fa-chevron-down text-xs text-slate-400 mt-1 shrink-0" id="iq-arrow-${i}"></i>
+                </button>
+                <div id="iq-${i}" class="hidden p-5 pt-3 border-t border-slate-100 dark:border-slate-800/60 bg-slate-50/50 dark:bg-slate-950/40 space-y-4">
+                  <!-- 1. Professional Answer in English -->
+                  <div>
+                    <span class="text-[10px] font-black uppercase text-indigo-600 dark:text-indigo-400 tracking-wider">1. Professional Answer (English):</span>
+                    <div class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed mt-1 font-medium">
+                      ${escapeHtml(q.answer)}
+                    </div>
+                  </div>
+
+                  <!-- 2. Simple Hinglish Explanation -->
+                  <div class="p-3.5 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800/60">
+                    <span class="text-[10px] font-black uppercase text-purple-700 dark:text-purple-300 tracking-wider">2. Simple Hinglish Explanation (Aasan Shabdo Me):</span>
+                    <div class="text-xs text-purple-900 dark:text-purple-200 leading-relaxed mt-1">
+                      ${escapeHtml(q.hinglish || q.answer)}
+                    </div>
+                  </div>
+
+                  <!-- 3. Practical Code Example -->
+                  ${q.codeExample ? `
+                    <div>
+                      <div class="flex items-center justify-between mb-1">
+                        <span class="text-[10px] font-black uppercase text-sky-600 dark:text-sky-400 tracking-wider">3. Practical Code Example:</span>
+                        <button onclick="copyCodeText('${escapeQuotes(q.codeExample)}')" class="text-[11px] px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-800 hover:bg-sky-500 hover:text-white transition">
+                          Copy Code
+                        </button>
+                      </div>
+                      <pre class="p-3 rounded-xl bg-slate-950 text-sky-300 font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800">${escapeHtml(q.codeExample)}</pre>
+                    </div>
+                  ` : ''}
+
+                  <!-- 4. Follow-up Questions -->
+                  ${q.followUp ? `
+                    <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700/60 text-xs">
+                      <strong class="text-slate-800 dark:text-slate-200">🔍 Follow-Up Questions (Jo Interviewer Agla Pooch Sakta Hai):</strong>
+                      <div class="text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">${escapeHtml(q.followUp)}</div>
+                    </div>
+                  ` : ''}
+
+                  <!-- 5. Pro Tip -->
+                  <div class="p-3 rounded-xl bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/40 border border-amber-200/60 text-xs text-amber-800 dark:text-amber-300 font-medium">
+                    ⚡ <strong>Pro Tip (Interview Me Kamyabi Ka Raaz):</strong> ${q.proTip}
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function toggleInterviewAccordion(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    // --- TESTS & DIAGNOSIS VIEW ---
+    function renderTestsView(container) {
+      const totalQuizzes = Object.keys(appState.quizScores).length;
+      const scores = Object.values(appState.quizScores);
+      const passed = scores.filter(s => s.score > 0).length;
+      const passRate = totalQuizzes > 0 ? Math.round((passed / totalQuizzes) * 100) : 0;
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <div>
+            <span class="text-xs font-bold text-rose-600 uppercase tracking-wider">Assessment Center</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+              🧪 Tests & Topic-Wise Diagnosis
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+              <span class="text-xs font-bold text-slate-400 uppercase">Kul Quizzes Attempted</span>
+              <div class="text-3xl font-black text-slate-900 dark:text-white mt-1">${totalQuizzes}</div>
+            </div>
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+              <span class="text-xs font-bold text-slate-400 uppercase">Pass Rate (Sahi Answer %)</span>
+              <div class="text-3xl font-black text-emerald-500 mt-1">${passRate}%</div>
+            </div>
+            <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+              <span class="text-xs font-bold text-slate-400 uppercase">Gyan Ka Level (Knowledge Level)</span>
+              <div class="text-3xl font-black text-sky-500 mt-1">${passRate >= 80 ? 'Master' : passRate >= 50 ? 'Intermediate' : 'Beginner'}</div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h3 class="font-bold text-base text-slate-900 dark:text-white mb-2">Kamzor Topics Ka Vishleshan (Weak Area Diagnostics):</h3>
+            <p class="text-xs text-slate-500 mb-4">Platform un topics ko automatically identify karta hai jahan score 50% se kam hai aur revision suggest karta hai.</p>
+            ${totalQuizzes === 0 ? `
+              <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 text-xs text-slate-400 text-center">
+                Apna kamzor topics analysis dekhne ke liye lessons ke quizzes attempt karein!
+              </div>
+            ` : `
+              <div class="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-xs text-emerald-800 dark:text-emerald-300 font-semibold">
+                ✓ Zabardast performance! Concepts par pakad majboot rakhne ke liye interactive sandbox me code run karte rahein.
+              </div>
+            `}
+          </div>
+        </div>
+      `;
+    }
+
+    // --- NOTES VIEW ---
+    function renderNotesView(container) {
+      const noteKeys = Object.keys(appState.notes);
+
+      container.innerHTML = `
+        <div class="space-y-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Notebook</span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
+                📝 Aapke Sabhi Lessons Ke Notes (Consolidated Notebook) (${noteKeys.length})
+              </h2>
+            </div>
+          </div>
+          ${noteKeys.length === 0 ? `
+            <div class="p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center text-slate-400 text-sm">
+              Aapne abhi tak koi notes nahi likhe hain. Kisi bhi lesson me 'Aapke Personal Notes' tab par click karke apne zaroori points yahan save karein!
+            </div>
+          ` : `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              ${noteKeys.map(k => `
+                <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+                  <div class="text-xs font-bold text-sky-600 dark:text-sky-400">Lesson ID: ${k}</div>
+                  <p class="text-xs text-slate-700 dark:text-slate-300 whitespace-pre-wrap leading-relaxed">${escapeHtml(appState.notes[k])}</p>
+                </div>
+              `).join('')}
+            </div>
+          `}
+        </div>
+      `;
+    }
+
+    // --- GLOBAL STATS UI SYNCHRONIZER ---
+    function updateGlobalStatsUI() {
+      const totalLessons = window.COURSE_MODULES.reduce((acc, m) => acc + m.lessons.length + (m.exercises ? m.exercises.length : 0), 0);
+      const totalCompleted = appState.completedLessons.length + appState.completedExercises.length;
+      const progressPercent = Math.round((totalCompleted / (totalLessons || 1)) * 100);
+
+      const modBadge = document.getElementById('modules-progress-badge');
+      if (modBadge) modBadge.textContent = `${progressPercent}% Done`;
+
+      const pts = Object.values(appState.quizScores).reduce((acc, q) => acc + (q.score || 0), 0);
+      const ptsCounter = document.getElementById('total-points-counter');
+      if (ptsCounter) ptsCounter.textContent = `${pts} pts`;
+
+      const streak = document.getElementById('streak-counter');
+      if (streak) streak.textContent = `${appState.streakDays} Day Streak`;
+    }
+
+    // --- GLOBAL SEARCH MODAL ---
+    function initSearch() {
+      const modal = document.getElementById('search-modal');
+      const input = document.getElementById('global-search-input');
+      const modalInput = document.getElementById('modal-search-input');
+
+      const openModal = () => {
+        modal.classList.remove('hidden');
+        modalInput.focus();
+      };
+
+      window.closeSearchModal = () => {
+        modal.classList.add('hidden');
+      };
+
+      if (input) input.addEventListener('focus', openModal);
+
+      window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          openModal();
+        }
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+          closeSearchModal();
+        }
+      });
+
+      modalInput.addEventListener('input', (e) => {
+        performSearch(e.target.value);
+      });
+    }
+
+    function performSearch(query) {
+      const container = document.getElementById('search-results-container');
+      if (!query.trim()) {
+        container.innerHTML = '<div class=\"p-4 text-center text-slate-400 text-sm\">Type keywords like \"useState\", \"Redux Toolkit\", \"Portal\"...</div>';
+        return;
+      }
+
+      const q = query.toLowerCase();
+      const results = [];
+
+      window.COURSE_MODULES.forEach(m => {
+        m.lessons.forEach(l => {
+          if (l.title.toLowerCase().includes(q) || (l.whatIsIt && l.whatIsIt.toLowerCase().includes(q))) {
+            results.push({ type: 'Lesson', title: l.title, mod: m.title, id: l.id });
+          }
+        });
+        if (m.exercises) {
+          m.exercises.forEach(ex => {
+            if (ex.title.toLowerCase().includes(q) || ex.instructions.toLowerCase().includes(q)) {
+              results.push({ type: 'Exercise', title: ex.title, mod: m.title, id: `${m.id}-ex-${ex.num}` });
+            }
+          });
+        }
+      });
+
+      window.COURSE_PROJECTS.forEach(p => {
+        if (p.title.toLowerCase().includes(q) || p.summary.toLowerCase().includes(q)) {
+          results.push({ type: 'Project', title: p.title, mod: 'Capstone Projects', id: p.id, isProject: true });
+        }
+      });
+
+      if (results.length === 0) {
+        container.innerHTML = '<div class=\"p-4 text-center text-slate-400 text-sm\">No matching topics found.</div>';
+        return;
+      }
+
+      container.innerHTML = results.slice(0, 10).map(r => `
+        <div
+          onclick="handleSearchResultClick('${r.id}', ${!!r.isProject})"
+          class="p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer flex items-center justify-between"
+        >
+          <div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-100 dark:bg-sky-950 text-sky-800 dark:text-sky-300">${r.type}</span>
+            <div class="text-sm font-bold text-slate-900 dark:text-white mt-1">${r.title}</div>
+            <div class="text-xs text-slate-400">${r.mod}</div>
+          </div>
+          <i class="fa-solid fa-arrow-right text-xs text-slate-400"></i>
+        </div>
+      `).join('');
+    }
+
+    function handleSearchResultClick(id, isProject) {
+      closeSearchModal();
+      if (isProject) {
+        navigateTo('projects', id);
+      } else {
+        navigateTo('lesson', id);
+      }
+    }
+
+    // --- RESET PROGRESS PROMPT ---
+    function promptResetProgress() {
+      if (confirm('Are you sure you want to reset all completed lessons, test scores, and notes? This action cannot be undone.')) {
+        localStorage.removeItem(STORAGE_KEY);
+        appState = getInitialState();
+        navigateTo('dashboard');
+        alert('All course progress has been reset successfully.');
+      }
+    }
+
+    // --- UTILITIES ---
+    function copyCodeText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('✓ Code copied to clipboard!');
+      }).catch(e => console.error(e));
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function escapeQuotes(str) {
+      return String(str)
+        .replace(/\\\\/g, '\\\\\\\\')
+        .replace(/'/g, "\\\\'")
+        .replace(/\\n/g, '\\\\n')
+        .replace(/\\r/g, '');
+    }
+
+    // --- INITIALIZE APPLICATION ON WINDOW LOAD ---
+    window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      initSearch();
+
+      // Mobile sidebar toggle
+      const sidebarBtn = document.getElementById('toggle-sidebar-btn');
+      const sidebar = document.getElementById('left-sidebar');
+      if (sidebarBtn && sidebar) {
+        sidebarBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('hidden');
+        });
+      }
+
+      // Start on Dashboard
+      navigateTo('dashboard');
+    });
+  </script>
+
+  <!-- CERTIFICATE OF COMPLETION MODAL -->
+  <div id="certificate-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white dark:bg-slate-900 border-4 border-amber-500/60 rounded-3xl max-w-3xl w-full p-8 shadow-2xl relative text-slate-900 dark:text-slate-100 animate-in fade-in zoom-in-95 duration-200">
+      <button onclick="closeCertificateModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xl">✕</button>
+      
+      <!-- Certificate Header -->
+      <div class="text-center space-y-2 border-b-2 border-amber-500/30 pb-6">
+        <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-amber-400 to-amber-600 flex items-center justify-center text-white text-3xl shadow-lg shadow-amber-500/30">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <span class="text-xs font-black tracking-widest uppercase text-amber-600 dark:text-amber-400">Official Certification of Achievement</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">CERTIFICATE OF COMPLETION</h2>
+        <p class="text-xs text-slate-500">ReactMastery Pro • Advanced Agentic & Job-Ready Curriculum</p>
+      </div>
+
+      <!-- Certificate Body -->
+      <div class="py-6 text-center space-y-4">
+        <p class="text-sm text-slate-600 dark:text-slate-400 font-medium">This certificate is proudly awarded to:</p>
+        <div class="max-w-md mx-auto">
+          <input
+            id="cert-student-name"
+            oninput="updateCertificateDisplay()"
+            type="text"
+            placeholder="Aapka Poora Naam (Enter Your Full Name)"
+            class="text-2xl sm:text-3xl font-black text-center text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-500 focus:outline-none bg-transparent w-full pb-1"
+          />
+        </div>
+        <h3 id="cert-display-name" class="text-2xl sm:text-3xl font-black text-indigo-600 dark:text-indigo-400 hidden">React Developer</h3>
+        <p class="text-sm text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
+          for successfully demonstrating competence and mastery in <strong>React 18 Architecture, TypeScript Core & Generics, Advanced Hooks, Context API, Redux Toolkit State Management, Performance Optimization, and Production Cloud Deployment</strong>.
+        </p>
+
+        <!-- Metrics & Verification Details -->
+        <div class="grid grid-cols-3 gap-3 max-w-lg mx-auto pt-4 text-center">
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800">
+            <div class="text-[10px] text-slate-400 uppercase font-bold">Issued Date</div>
+            <div id="cert-display-date" class="text-xs font-bold text-slate-800 dark:text-slate-200 mt-0.5">November 8, 2026</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800">
+            <div class="text-[10px] text-slate-400 uppercase font-bold">Curriculum</div>
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">12 Modules Completed</div>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800">
+            <div class="text-[10px] text-slate-400 uppercase font-bold">Verification ID</div>
+            <div class="text-xs font-mono font-bold text-purple-600 dark:text-purple-400 mt-0.5">RM-9942-PRO</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-800">
+        <span id="cert-display-score" class="text-xs text-slate-500 font-semibold">100% Curriculum Finished</span>
+        <div class="flex gap-2">
+          <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs hover:bg-indigo-500 transition shadow-md flex items-center gap-1.5">
+            <i class="fa-solid fa-print"></i>
+            <span>Print / Save as PDF</span>
+          </button>
+          <button onclick="closeCertificateModal()" class="px-4 py-2 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs hover:bg-slate-300 transition">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
